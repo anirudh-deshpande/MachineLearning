@@ -190,15 +190,18 @@ def get_dicts(train_csv, test_csv, training):
     print "Eucledian Accuracy(L2) for K = 7 : %.4f" % (float(correct_euclidean_7) * 100.0/ total)
 
 
-if __name__ == "__main__":
+def print_knn_accuracy(train_file, test_file):
 
-    train_csv = get_csv('train.txt')
-    test_csv = get_csv('test.txt')
+    train_csv = get_csv(train_file)
+    test_csv = get_csv(test_file)
 
     train_csv, dict_mean, dict_std = normalize_train(train_csv)
 
     # dict_mean, dict_std are mean and std of
     test_csv = normalize_test(test_csv, dict_mean, dict_std)
+
+    print "*** KNN Results ***"
+    print "----------------------------------------------------------------------------"
 
     print "\nTraining accuracy -"
     print "-----------------------------------"

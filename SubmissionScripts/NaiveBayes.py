@@ -43,7 +43,7 @@ def get_dict_mean_std_prior(label_set, train_csv):
     return [dict_mean, dict_std, dict_prior]
 
 
-def get_prediction_accuracy(test_csv, dict_mean, dict_std, dict_prior):
+def get_prediction_accuracy(test_csv, dict_mean, dict_std, dict_prior, label_set):
     iter_columns = ['B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     count = 0
     for index, row in test_csv.iterrows():
@@ -57,7 +57,7 @@ def get_prediction_accuracy(test_csv, dict_mean, dict_std, dict_prior):
 
 
             for column in iter_columns:
-                mean_of_label = dict_mean[(label, column)];
+                mean_of_label = dict_mean[(label, column)]
                 std_of_label = dict_std[(label, column)]
 
                 if mean_of_label != 0 or std_of_label != 0 or row[column] != 0:
@@ -85,20 +85,21 @@ def get_variance_zero(train_csv):
                 print label, column
 
 
-
-
-if __name__ == "__main__":
-    train_csv = get_csv("train.txt")
+def print_naivebayes_accuracy(train_file, test_file):
+    train_csv = get_csv(train_file)
     label_set = get_label_set(train_csv)
 
-    #get_variance_zero(train_csv)
-
     dict_mean, dict_std, dict_prior = get_dict_mean_std_prior(label_set, train_csv)
-    test_csv = get_csv("test.txt")
+    test_csv = get_csv(test_file)
 
-    train_accuracy = get_prediction_accuracy(train_csv, dict_mean, dict_std, dict_prior)
+    print "*** Naive Bayes Results ***"
+    print "----------------------------------------------------------------------------"
+
+    train_accuracy = get_prediction_accuracy(train_csv, dict_mean, dict_std, dict_prior, label_set)
     print "Training accuracy : %.4f" % (train_accuracy * 100.0)
 
-    test_accuracy = get_prediction_accuracy(test_csv, dict_mean, dict_std, dict_prior)
+    test_accuracy = get_prediction_accuracy(test_csv, dict_mean, dict_std, dict_prior, label_set)
     print "Testing accuracy : %.4f" % (test_accuracy * 100.0)
+
+    print '\n\n\n'
 
