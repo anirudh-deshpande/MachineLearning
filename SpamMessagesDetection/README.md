@@ -50,3 +50,6 @@ Results,
 - Precision: 0.972067039106
 - Recall: 0.940540540541
 - F1 Score: 0.956043956044
+
+Predicts "Congratulations! You have won 10000000 dollars, hurrah!" as Ham, 
+"Hey, how are you?" as Spam.

@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+import pandas as pd
 
 messages_df = get_messages_df(os.path.abspath('dataset/SMSSpamCollection'))
 
@@ -33,3 +34,14 @@ print 'Accuracy: ' + format(accuracy_score(Y_test, predictions))
 print 'Precision: ' + format(precision_score(Y_test, predictions))
 print 'Recall: ' + format(recall_score(Y_test, predictions))
 print 'F1 Score: ' + format(f1_score(Y_test, predictions))
+
+message_2 = ["Congratulations! You have won 10000000 dollars, hurrah!"]
+message_3 = ["Hey, how are you?"]
+
+testing_data_message_2 = count_vector.transform(message_2).toarray()
+predictions_2 = naive_bayes.predict(testing_data_message_2)
+print predictions_2
+
+testing_data_message_3 = count_vector.transform(message_3).toarray()
+predictions_3 = naive_bayes.predict(testing_data_message_3)
+print predictions_3
