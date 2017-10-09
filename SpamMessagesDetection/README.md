@@ -51,5 +51,5 @@ Results,
 - Recall: 0.940540540541
 - F1 Score: 0.956043956044
 
-Predicts "Congratulations! You have won 10000000 dollars, hurrah!" as Ham, 
-"Hey, how are you?" as Spam.
+Predicts "Congratulations! You have won 10000000 dollars, hurrah!" as Spam, 
+"Hey, how are you?" as Ham.
